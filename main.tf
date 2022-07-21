@@ -10,23 +10,10 @@ module "github_repository" {
   is_template               = true
 }
 
-# create the branch - main
-resource "github_branch" "main" {
-    repository              = module.github_repository.name
-    branch                  = "main"
-}
-
 # ensure the 'main' branch is the default branch
 resource "github_branch_default" "main" {
   repository                = module.github_repository.name
-  branch                    = github_branch.main.branch  
-}
-
-# create the 'init' branch
-resource "github_branch" "init" {
-    repository              = module.github_repository.name
-    branch                  = "init"
-    source_branch           = github_branch.main.branch
+  branch                    = "main"
 }
 
 # create the s3 terraform state backend.  after the first run, the state should be migrated

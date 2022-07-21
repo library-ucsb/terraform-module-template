@@ -6,7 +6,7 @@ module_name                     = "template"
 terraform_s3_backend = {
   namespace                     = "ucsb-library"
   environment                   = "iac-github"
-  stage                         = "terraform-module-template"
+  stage                         = "tf-module-template"
   name                          = "terraform"
   attributes                    = [ "state" ]
 }
